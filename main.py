@@ -38,8 +38,7 @@ def find_parent(pid):
     try:
         sql = "SELECT comment FROM parent_reply WHERE comment_id = '{}' LIMIT 1".format(pid)
         c.execute(sql)
-        result = c.fetchone()
-        if result != None:
+        if (result := c.fetchone()) != None:
             return result[0]
         else:
             return False
@@ -51,8 +50,7 @@ def find_existing_score(pid):
     try:
         sql = "SELECT score FROM parent_reply WHERE parent_id = '{}' LIMIT 1".format(pid)
         c.execute(sql)
-        result = c.fetchone()
-        if result != None:
+        if (result := c.fetchone()) != None:
             return result[0]
         else:
             return False
